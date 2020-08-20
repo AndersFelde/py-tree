@@ -21,17 +21,17 @@ class direc():
             return
 
         if os.name != "nt":
-            sl = "/"
+            self.sl = "/"
         else:
-            sl = "\\"
+            self.sl = "\\"
         try:
             dirs = os.listdir(self.path)
         except:
             self.__printOut()
             return
         for d in dirs:
-            if os.path.isdir(self.path + sl + d):
-                newDir = direc(self.path + sl + d, self.depth +
+            if os.path.isdir(self.path + self.sl + d):
+                newDir = direc(self.path + self.sl + d, self.depth +
                                1, outFile=self.outFile, maxDepth=self.maxDepth)
                 self.__printOut(newDir, "dir")
                 # if(self.outFile):
@@ -50,7 +50,8 @@ class direc():
             elif(type == "file"):
                 cprint(("    " * (self.depth+1)) + "└─ " + string, "green")
             else:
-                cprint(f"Was not able to access '{self.path}'", "red")
+                cprint(
+                    ("    " * (self.depth+1)) + f"Was not able to access '{self.path + self.sl}'", "red")
         else:
             if(type == "dir"):
                 self.outFile.write(str(string) + "\n")
@@ -59,7 +60,7 @@ class direc():
                     ("    " * (self.depth+1)) + "└─ " + string + "\n")
             else:
                 self.outFile.write(
-                    f"Was not able to access '{self.path}'" + "\n")
+                    ("    " * (self.depth+1)) + f"Was not able to access '{self.path}'" + "\n")
 
 
 if __name__ == "__main__":
