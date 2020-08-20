@@ -1,3 +1,4 @@
+#!/bin/python3
 from direc import direc
 import sys
 import os
@@ -22,18 +23,22 @@ if(res.outFile):
 else:
     f = False
 if(res.maxDepth):
-    print(f"Max: {res.maxDepth}")
+    print(f"Max Depth: {res.maxDepth}")
 
 
 try:
     root = direc(res.direcName, 0, maxDepth=res.maxDepth, outFile=f)
 except:
-    print(f"{res.direcName} does not exist")
+    print(f"'{res.direcName}' does not exist")
+    if(f):
+        f.close()
     exit()
 if not f:
     print(root)
 else:
     f.write(str(root))
+
 root.searchDir()
+
 if(f):
     f.close()
