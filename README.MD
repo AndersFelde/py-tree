@@ -11,10 +11,10 @@ pip install ntpath
 # Usage
 
 ```
-usage: Argument parser [-h] [--out OUTFILE] [--maxDepth MAXDEPTH] [direcName]
+usage: Py-tree [-h] [--out OUTFILE] [--maxDepth MAXDEPTH] [directoryName]
 
 positional arguments:
-  direcName             name of directory you want to be listed
+  directoryName         name of directory you want to be listed
 
 optional arguments:
   -h, --help            show this help message and exit

@@ -3,14 +3,15 @@ from dependecies.direc import direc
 import sys
 import os
 import argparse
+from termcolor import cprint
 
-parser = argparse.ArgumentParser("Argument parser")
+parser = argparse.ArgumentParser("Py-tree")
 
 parser.add_argument("--out", "-o", type=str,
                     help="file to write output to", dest="outFile", default=False)
 parser.add_argument("--maxDepth", "-mD", type=int, default=False,
                     help="max depth it will explore in directories", dest="maxDepth")
-parser.add_argument("direcName", type=str, default=os.getcwd(), nargs="?",
+parser.add_argument("directoryName", type=str, default=os.getcwd(), nargs="?",
                     help="name of directory you want to be listed")
 # nargs="?" for at den ikke skal være required
 
@@ -27,18 +28,21 @@ if(res.maxDepth):
 
 
 try:
-    root = direc(res.direcName, 0, maxDepth=res.maxDepth, outFile=f)
+    root = direc(res.directoryName, 0, maxDepth=res.maxDepth, outFile=f)
 except:
-    print(f"'{res.direcName}' does not exist")
+    print(f"'{res.directoryName}' does not exist")
     if(f):
+        print("Closed file")
         f.close()
     exit()
+
 if not f:
-    print(root)
+    cprint(root, "yellow")
 else:
-    f.write(str(root))
+    f.write(str(root) + "\n")
 
 root.searchDir()
 
 if(f):
+    print("Closed file")
     f.close()
