@@ -38,6 +38,9 @@ class direc():
             else:
                 self.__printOut(d, type="file")
 
+        del self
+        # spare RAM fordi objekt er ikke lenger nødvendig
+
     def __str__(self):
         return ("    " * self.depth) + "└─" + ntpath.basename(self.path) + self.sl
 
