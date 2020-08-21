@@ -13,7 +13,7 @@ class direc():
         self.depth = depth
         self.maxDepth = maxDepth
         self.outFile = outFile
-        self.sl = self.__getSl()
+        self.sl = os.sep
 
     def exists(self):
         return os.path.isdir(self.path)
@@ -42,13 +42,7 @@ class direc():
         # spare RAM fordi objekt er ikke lenger nødvendig
 
     def __str__(self):
-        return ("    " * self.depth) + "└─" + ntpath.basename(self.path) + self.sl
-
-    def __getSl(self):
-        if os.name != "nt":
-            return "/"
-        else:
-            return "\\"
+        return (("    " * self.depth) + "└─" + ntpath.basename(self.path) + self.sl)
 
     def __printOut(self, string="", type=None):
         fileString = ("    " * (self.depth+1)) + "└─ " + string
