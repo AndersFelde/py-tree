@@ -44,5 +44,4 @@ else:
 root.searchDir()
 
 if(f):
-    print("Closed file")
     f.close()
