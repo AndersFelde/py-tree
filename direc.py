@@ -34,8 +34,6 @@ class direc():
                 newDir = direc(self.path + self.sl + d, self.depth +
                                1, outFile=self.outFile, maxDepth=self.maxDepth)
                 self.__printOut(newDir, "dir")
-                # if(self.outFile):
-                #     self.outFile.write(str(newDir))
                 newDir.searchDir()
             else:
                 self.__printOut(d, type="file")
