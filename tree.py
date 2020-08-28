@@ -28,7 +28,8 @@ if(res.maxDepth):
 
 
 try:
-    root = direc(res.directoryName, 0, maxDepth=res.maxDepth, outFile=f)
+    root = direc(res.directoryName, 0, maxDepth=res.maxDepth,
+                 outFile=f, last="Root")
 except:
     print(f"'{res.directoryName}' does not exist")
     if(f):

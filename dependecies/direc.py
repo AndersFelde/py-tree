@@ -6,7 +6,7 @@ from termcolor import cprint, colored
 
 class direc():
     # short for direcTORY
-    def __init__(self, path, depth, maxDepth=False, outFile=False, outString=""):
+    def __init__(self, path, depth, maxDepth=False, outFile=False, outString="", last=False):
         self.path = path
         if(not self.exists()):
             raise(Exception())
@@ -15,6 +15,9 @@ class direc():
         self.outFile = outFile
         self.sl = os.sep
         self.outString = outString
+        self.last = last
+        self.signs = {False: "├─", True: "└─", "Root": ""}
+        self.typesOfOutstrings = {True: "    ", False: "│   ", "Root": "    "}
 
     def exists(self):
         return os.path.isdir(self.path)
@@ -30,24 +33,30 @@ class direc():
             # printer rød error
             return
 
+        last = False
+
         for d in dirs:
+            if d == dirs[-1]:
+                last = True
             if os.path.isdir(self.path + self.sl + d):
-                outString = self.outString + "│   "
+                outString = self.outString + self.typesOfOutstrings[self.last]
                 newDir = direc(self.path + self.sl + d, self.depth +
-                               1, outFile=self.outFile, maxDepth=self.maxDepth, outString=outString)
+                               1, outFile=self.outFile, maxDepth=self.maxDepth, outString=outString, last=last)
                 self.__printOut(str(newDir), type="dir")
                 newDir.searchDir()
             else:
-                self.__printOut(d, type="file")
+                self.__printOut(d, type="file", last=last)
 
         del self
         # spare RAM fordi objekt er ikke lenger nødvendig
 
     def __str__(self):
-        return ((self.outString) + "└─" + ntpath.basename(self.path) + self.sl)
 
-    def __printOut(self, string="", type=None):
-        fileString = self.outString + "└─ "
+        return ((self.outString) + self.signs[self.last] + ntpath.basename(self.path) + self.sl)
+
+    def __printOut(self, string="", type=None, last=False):
+        fileString = self.outString + \
+            self.typesOfOutstrings[self.last] + self.signs[last]
         errorString = [self.outString + "    ",
                        f"Was not able to access '{self.path + self.sl}'"]
 

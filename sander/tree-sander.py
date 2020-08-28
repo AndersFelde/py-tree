@@ -1,5 +1,5 @@
 #!/bin/python3
-from dependencies.direc import direc
+from direc_sander import direc
 import sys
 import os
 import argparse
