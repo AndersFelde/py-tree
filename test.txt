@@ -1,115 +1,27 @@
-└─py-ls/    └─.git/
-        └─ COMMIT_EDITMSG
-        └─ config
-        └─ description
-        └─ FETCH_HEAD
-        └─ HEAD
-        └─hooks/
-            └─ applypatch-msg.sample
-            └─ commit-msg.sample
-            └─ fsmonitor-watchman.sample
-            └─ post-update.sample
-            └─ pre-applypatch.sample
-            └─ pre-commit.sample
-            └─ pre-push.sample
-            └─ pre-rebase.sample
-            └─ pre-receive.sample
-            └─ prepare-commit-msg.sample
-            └─ update.sample
-        └─ index
-        └─info/
-            └─ exclude
-        └─logs/
-            └─ HEAD
-            └─refs/
-                └─heads/
-                    └─ master
-                └─remotes/
-                    └─origin/
-                        └─ master
-        └─objects/
-            └─02/
-                └─ 2359a6e6b39122df407d6b7c3dd915ef86a25f
-            └─11/
-                └─ bfc9bc930728ce6150a8d66bdd28d02053885f
-            └─17/
-                └─ f0b93195eb54992334f324ab886421b0f14e5a
-            └─23/
-                └─ 90927caa8bff2192d779c6f62037ebc80e4bb8
-            └─30/
-                └─ e335c99d1a8431852b42f54ceb52bc2a671648
-            └─35/
-                └─ 82d6bd1d5804c0d819d71bd95589f0173fe4ff
-            └─37/
-                └─ e0116b157dbab59ef96646ba486e6b10e7fd86
-            └─40/
-                └─ 642d4793c798f4abe8a8612721741812af3455
-            └─45/
-                └─ 93184489b012ccad88bfb021608a71768d308d
-            └─47/
-                └─ 07cd275ff414df9b376005fca8a4cba59f9467
-            └─55/
-                └─ a52d610995563bdf9b3381c2eace55e2339a0e
-            └─5c/
-                └─ a54da94104dae2a3ea315c31943d423ef322c8
-            └─6f/
-                └─ 9509c88bed7080d496fc5e1d87a9315e30549d
-            └─73/
-                └─ 318357c6a5c0c6cd16bebbf18c7e6faa011508
-            └─7e/
-                └─ d26fddef750e00d6cecdc901143265b561cf99
-            └─88/
-                └─ 903a7af76888d338eea0a12ef478b950dd83f8
-            └─8b/
-                └─ 137891791fe96927ad78e64b0aad7bded08bdc
-            └─92/
-                └─ e05bc2c007994093b799a39338579a2506d991
-            └─97/
-                └─ 92806866fc3aaa919cde7cc09dd18538299f13
-            └─a2/
-                └─ 3c123c8c8c2abe7253ee8cef31b3cbb2ffe1c9
-            └─a4/
-                └─ 02d19d8eb73b210648ac5acd7678d0bf921896
-            └─a9/
-                └─ 8efffeafcf923891e0dcc6e1cf257092d5ed19
-            └─ab/
-                └─ 92312c380435c7acb4a66da43574e087f5b387
-            └─ae/
-                └─ 9002d98e90cd0d0b06c3f44de14dae8b5156dc
-            └─b3/
-                └─ 5fc21f1576429dc94fa11e5f6684c3188408c0
-            └─b9/
-                └─ 8d757380711165ff41eeacb26260cc263733ca
-            └─c7/
-                └─ 964f74f59a95d0881984821601e3f5fc75d3d2
-            └─cf/
-                └─ f5d1ce2c367f54dbfd1c9b411c75c53318c2a4
-            └─d1/
-                └─ 6b5c85988f4616129ea9206dbae653bff8959b
-            └─df/
-                └─ e0770424b2a19faf507a501ebfc23be8f54e7b
-            └─e6/
-                └─ 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
-            └─ed/
-                └─ 8ebf583f771da9150c35db3955987b7d757904
-            └─f2/
-                └─ 9e1cbf5c2abe0aeb1de59da3c2815fab448b9d
-            └─f9/
-                └─ 95bfea943a1ad18c68a9e388b0920a1d3d1ca3
-            └─info/
-            └─pack/
-        └─ ORIG_HEAD
-        └─refs/
-            └─heads/
-                └─ master
-            └─remotes/
-                └─origin/
-                    └─ master
-            └─tags/
-    └─ .gitattributes
-    └─ .gitignore
-    └─ direc.py
-    └─ main.py
-    └─ test.txt
-    └─__pycache__/
-        └─ direc.cpython-38.pyc
+py-tree\
+    ├─.git\
+    │   ├─COMMIT_EDITMSG
+    │   ├─config
+    │   ├─description
+    │   ├─FETCH_HEAD
+    │   ├─HEAD
+    │   ├─hooks\
+    │   ├─index
+    │   ├─info\
+    │   ├─logs\
+    │   ├─objects\
+    │   ├─ORIG_HEAD
+    │   └─refs\
+    ├─.gitattributes
+    ├─.gitignore
+    ├─dependecies\
+    │   ├─direc.py
+    │   └─__pycache__\
+    ├─README.MD
+    ├─sander\
+    │   ├─direc_sander.py
+    │   └─tree-sander.py
+    ├─test.txt
+    ├─tree.py
+    └─__pycache__\
+        └─direc.cpython-38.pyc

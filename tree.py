@@ -23,8 +23,6 @@ if(res.outFile):
     f = open(res.outFile, "w", encoding="utf-8")
 else:
     f = False
-if(res.maxDepth):
-    print(f"Max Depth: {res.maxDepth}")
 
 
 try:

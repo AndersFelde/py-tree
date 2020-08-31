@@ -22,6 +22,13 @@ class direc():
     def exists(self):
         return os.path.isdir(self.path)
 
+    def __createNewDirec(self, d, last):
+        outString = self.outString + self.typesOfOutstrings[self.last]
+        newDir = direc(self.path + self.sl + d, self.depth +
+                       1, outFile=self.outFile, maxDepth=self.maxDepth, outString=outString, last=last)
+        self.__printOut(str(newDir), type="dir")
+        newDir.searchDir()
+
     def searchDir(self):
         if self.maxDepth and self.depth == self.maxDepth:
             return
@@ -29,7 +36,7 @@ class direc():
         try:
             dirs = os.listdir(self.path)
         except:
-            self.__printOut()
+            self.__printOut(type="Error")
             # printer rød error
             return
 
@@ -37,13 +44,10 @@ class direc():
 
         for d in dirs:
             if d == dirs[-1]:
+                # checks if is last element in folder
                 last = True
             if os.path.isdir(self.path + self.sl + d):
-                outString = self.outString + self.typesOfOutstrings[self.last]
-                newDir = direc(self.path + self.sl + d, self.depth +
-                               1, outFile=self.outFile, maxDepth=self.maxDepth, outString=outString, last=last)
-                self.__printOut(str(newDir), type="dir")
-                newDir.searchDir()
+                self.__createNewDirec(d, last)
             else:
                 self.__printOut(d, type="file", last=last)
 
@@ -51,13 +55,13 @@ class direc():
         # spare RAM fordi objekt er ikke lenger nødvendig
 
     def __str__(self):
-
         return ((self.outString) + self.signs[self.last] + ntpath.basename(self.path) + self.sl)
 
     def __printOut(self, string="", type=None, last=False):
         fileString = self.outString + \
             self.typesOfOutstrings[self.last] + self.signs[last]
-        errorString = [self.outString + "    ",
+
+        errorString = [self.outString + self.typesOfOutstrings[False],
                        f"Was not able to access '{self.path + self.sl}'"]
 
         if not self.outFile:
@@ -79,6 +83,4 @@ class direc():
 
 
 if __name__ == "__main__":
-    root = direc(os.getcwd(), 0)
-    cprint(root, "yellow")
-    root.searchDir()
+    print("U know joe?")
