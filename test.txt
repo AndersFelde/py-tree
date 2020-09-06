@@ -1,0 +1,27 @@
+py-tree\
+    ├─.git\
+    │   ├─COMMIT_EDITMSG
+    │   ├─config
+    │   ├─description
+    │   ├─FETCH_HEAD
+    │   ├─HEAD
+    │   ├─hooks\
+    │   ├─index
+    │   ├─info\
+    │   ├─logs\
+    │   ├─objects\
+    │   ├─ORIG_HEAD
+    │   └─refs\
+    ├─.gitattributes
+    ├─.gitignore
+    ├─dependecies\
+    │   ├─direc.py
+    │   └─__pycache__\
+    ├─README.MD
+    ├─sander\
+    │   ├─direc_sander.py
+    │   └─tree-sander.py
+    ├─test.txt
+    ├─tree.py
+    └─__pycache__\
+        └─direc.cpython-38.pyc

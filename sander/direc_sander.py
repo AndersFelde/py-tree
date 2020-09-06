@@ -16,18 +16,9 @@ class direc():
         self.sl = os.sep
         self.outString = outString
         self.last = last
-        self.signs = {False: "├─", True: "└─", "Root": ""}
-        self.typesOfOutstrings = {True: "    ", False: "│   ", "Root": "    "}
 
     def exists(self):
         return os.path.isdir(self.path)
-
-    def __createNewDirec(self, d, last):
-        outString = self.outString + self.typesOfOutstrings[self.last]
-        newDir = direc(self.path + self.sl + d, self.depth +
-                       1, outFile=self.outFile, maxDepth=self.maxDepth, outString=outString, last=last)
-        self.__printOut(str(newDir), type="dir")
-        newDir.searchDir()
 
     def searchDir(self):
         if self.maxDepth and self.depth == self.maxDepth:
@@ -36,18 +27,20 @@ class direc():
         try:
             dirs = os.listdir(self.path)
         except:
-            self.__printOut(type="Error")
+            self.__printOut()
             # printer rød error
             return
-
         last = False
-
         for d in dirs:
             if d == dirs[-1]:
-                # checks if is last element in folder
                 last = True
+                #print(self.last)
             if os.path.isdir(self.path + self.sl + d):
-                self.__createNewDirec(d, last)
+                outString = (self.outString + "│   ") * self.depth
+                newDir = direc(self.path + self.sl + d, self.depth +
+                               1, outFile=self.outFile, maxDepth=self.maxDepth, outString=outString, last=last)
+                self.__printOut(str(newDir), type="dir", last=last)
+                newDir.searchDir()
             else:
                 self.__printOut(d, type="file", last=last)
 
@@ -55,23 +48,31 @@ class direc():
         # spare RAM fordi objekt er ikke lenger nødvendig
 
     def __str__(self):
-        return ((self.outString) + self.signs[self.last] + ntpath.basename(self.path) + self.sl)
+        if self.depth == 0:
+            folderString = self.outString
+        elif self.last:
+            folderString = self.outString + "└─ "
+        else:
+            folderString = self.outString + "├─ "
+
+        return (folderString + ntpath.basename(self.path) + self.sl)
 
     def __printOut(self, string="", type=None, last=False):
-        fileString = self.outString + \
-            self.typesOfOutstrings[self.last] + self.signs[last]
-
-        errorString = [self.outString + self.typesOfOutstrings[False],
-                       f"Was not able to access '{self.path + self.sl}'"]
+        errorString = [self.outString + "    ",
+                           f"Was not able to access '{self.sl}'"]
+        if last:
+            fileString = self.outString + "│   └─ "
+        else:
+            fileString = self.outString + "│   ├─ "
 
         if not self.outFile:
             if(type == "dir"):
                 cprint(string, "blue")
             elif(type == "file"):
-                print(colored(fileString, "blue") +
+                cprint(colored(fileString, "blue") +
                       colored(string, "green"))
             else:
-                print(colored(errorString[0], "blue") +
+                cprint(colored(errorString[0], "blue") +
                       colored(errorString[1], "red"))
         else:
             if(type == "dir"):
@@ -83,4 +84,7 @@ class direc():
 
 
 if __name__ == "__main__":
-    print("U know joe?")
+    root = direc(os.getcwd(), 0)
+    cprint(root, "yellow")
+    root.searchDir()
+

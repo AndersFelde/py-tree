@@ -1,11 +1,11 @@
 #!/bin/python3
-from dependecies.direc import direc
+from direc_sander import direc
 import sys
 import os
 import argparse
 from termcolor import cprint
 
-parser = argparse.ArgumentParser("Py-tree")
+parser = argparse.ArgumentParser("tree")
 
 parser.add_argument("--out", "-o", type=str,
                     help="file to write output to", dest="outFile", default=False)
@@ -23,11 +23,12 @@ if(res.outFile):
     f = open(res.outFile, "w", encoding="utf-8")
 else:
     f = False
+if(res.maxDepth):
+    print(f"Max Depth: {res.maxDepth}")
 
 
 try:
-    root = direc(res.directoryName, 0, maxDepth=res.maxDepth,
-                 outFile=f, last="Root")
+    root = direc(res.directoryName, 0, maxDepth=res.maxDepth, outFile=f)
 except:
     print(f"'{res.directoryName}' does not exist")
     if(f):
@@ -36,7 +37,8 @@ except:
     exit()
 
 if not f:
-    cprint(root, "yellow")
+    rootStr = str(root)
+    cprint(rootStr, "yellow")
 else:
     f.write(str(root) + "\n")
 
