@@ -70,6 +70,4 @@ class direc():
 
 
 if __name__ == "__main__":
-    root = direc(os.getcwd(), 0)
-    cprint(root, "yellow")
-    root.searchDir()
+    print("Kjenner du joe?")
