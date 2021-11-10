@@ -30,7 +30,7 @@ class direc():
         newDir.searchDir()
 
     def searchDir(self):
-        if self.maxDepth and self.depth == self.maxDepth:
+        if self.maxDepth and self.depth == self.maxDepth or self.__str__().find(".git/") > 0:
             return
 
         try:
